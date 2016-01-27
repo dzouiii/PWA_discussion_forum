@@ -12,27 +12,28 @@ var session		 = require('express-session');
 
 var configDB	 = require('./config/database.js');
 
-// connect to db
+// připojení k db
 mongoose.connect(configDB.url);
 
-require('./config/passport')(passport); // pass passport for configuration
+// konfigurace passportu
+require('./config/passport')(passport);
 
-// set up express application
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser()); // get information from html forms
+// každý request vypsat v konzoli
+app.use(morgan('dev'));
+// čtení cookies (potřebné pro auth)
+app.use(cookieParser());
+// data z html formů
+app.use(bodyParser());
 
-app.set('view engine', 'ejs'); // set up ejs for templating
+// nastavení ejs pro template
+app.set('view engine', 'ejs');
 
-// required for passport
-app.use(session({ secret: 'K2lm8Id1SawB3' })); // session secret
+app.use(session({ secret: 'K2lm8Id1SawB3' }));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(passport.session());
+app.use(flash());
 
-// routes
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configures passport
+// načtení routes a passportu
+require('./app/routes.js')(app, passport);
 
-//launch
 app.listen(port);
-console.log('The magic happens on port ' + port);

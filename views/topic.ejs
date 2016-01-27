@@ -12,15 +12,18 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">PWA discussion forum</a>
+            <a class="navbar-brand" href="/topics">PWA discussion forum</a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
     </div>
 </nav>
 
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Topics</h1>
+        <h1><span class="fa fa-comment"></span> Topics</h1>
         <p><a href="/response/<%= topic._id %>" class="btn btn-default btn-sm">Response</a></p>
     </div>
 
@@ -30,7 +33,7 @@
             <div class="well">
                 <h3 style="color:black"><span style="color:black" class="fa fa-comment"></span> <%= topic.topic.title %></h3></a>
                 <strong>Text</strong>: <%= topic.topic.text %> <br>
-                <strong>Created by</strong>: <%= topic.topic.author %> <%= topic.topic.date %>  <br>
+                <strong>Created by</strong>: <%= topic.topic.author %>, <%= topic.topic.date %>  <br>
             </div>
         </div>
     </div><br>

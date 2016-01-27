@@ -5,21 +5,32 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
-        body        { padding-top:80px; }
+        body        { padding-top:50px; }
     </style>
 </head>
 <body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/topics">PWA discussion forum</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
 
     <div class="col-sm-6 col-sm-offset-3">
 
-        <h1><span class="fa fa-sign-in"></span> New Topic</h1>
+        <h1><span class="fa fa-comment"></span> Response</h1>
 
-        <!-- TOPIC FORM -->
         <form action="/response/<%= id %>" method="post">
             <div class="form-group">
                 <label>Text:</label>
-                <textarea class="form-control" rows="10" name="text"><%= id %></textarea>
+                <textarea class="form-control" rows="10" name="text"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Response</button>

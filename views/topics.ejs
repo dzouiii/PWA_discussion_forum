@@ -12,37 +12,34 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
          <div class="navbar-header">
-             <a class="navbar-brand" href="/profile">PWA discussion forum</a>
+             <a class="navbar-brand" href="/topics">PWA discussion forum</a>
          </div>
+         <ul class="nav navbar-nav navbar-right">
+             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+         </ul>
     </div>
 </nav>
 
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Topics</h1>
-        <p>Logged as:  <a href="/new_topic" class="btn btn-default btn-sm">New Topic</a></p>
+        <h1><span class="fa fa-comment"></span> Topics</h1>
+        <a href="/new_topic" class="btn btn-default btn-sm">New Topic</a>
     </div>
-
-
-
-        <!-- TOPICS -->
         <% for(var i=0; i<topics.length; i++) {%>
             <div class="row">
                 <div class="container">
                     <div class="well">
                         <a href="/topic/<%= topics[i]._id %>"><h3 style="color:black"><span style="color:black" class="fa fa-comment"></span> <%= topics[i].topic.title %></h3></a>
                         <strong>Text</strong>: <%= topics[i].topic.text %> <br>
-                        <strong>Created by</strong>: <%= topics[i].topic.author %> <%= topics[i].topic.date %>  <br>
-                        <% if (user.local.email == topics[i].topic.author) { %>
+                        <strong>Created by</strong>: <%= topics[i].topic.author %>, <%= topics[i].topic.date %>  <br>
+                        <% if (user.local.nickname == topics[i].topic.author) { %>
                         <a href="/delete_topic/<%= topics[i]._id %>"><h5><span class="fa fa-trash"></span> Delete</h5></a>
                         <% } %>
                     </div>
                 </div>
-    </div><br>
+            </div><br>
         <% } %>
-
-
 </div>
 </body>
 </html>
